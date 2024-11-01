@@ -26,7 +26,7 @@ public class ClientesServices(IDbContextFactory<ClientesContext> DbFactory) : IC
                 WhatsApp = p.WhatsApp
             }).FirstOrDefaultAsync();
 
-        return cliente;
+        return cliente ?? new ClientesDto();
     }
 
     public async Task<bool> Eliminar(int clienteId)
