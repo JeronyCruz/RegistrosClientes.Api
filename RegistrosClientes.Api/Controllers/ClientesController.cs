@@ -36,10 +36,9 @@ namespace RegistrosClientes.Api.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCliente(int id, ClientesDto clientesDto)
         {
-            var clienteExistente = await clientesService.Buscar(id);
-            if (clienteExistente == null)
+            if(id != clientesDto.ClienteId)
             {
-                return NotFound("Cliente no encontrado.");
+                return BadRequest();
             }
 
             // Actualizar el cliente
